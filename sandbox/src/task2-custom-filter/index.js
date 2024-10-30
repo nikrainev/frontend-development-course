@@ -7,5 +7,10 @@
  * @returns {Array} Отфильтрованный массив
  */
 export const filter = (array, filterFn, inplace = false) => {
-    // Ваш код здесь
+    if (!inplace) {
+        return array.filter((n) => filterFn(n));
+    }
+
+    array.splice(0, array.length, ...array.filter((n) => filterFn(n)))
+    return array;
 };
